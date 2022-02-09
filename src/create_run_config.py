@@ -13,7 +13,7 @@ config['flight_segmentation'] = {}
 fs = config['flight_segmentation']
 fs['directory'] = ''
 
-config['quicklooks'] = {'mode': on}
+config['quicklooks'] = {'mode': 'on'}
 
 with open('../run_config.cfg', 'w') as configfile:
     config.write(configfile)
