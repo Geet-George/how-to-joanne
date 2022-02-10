@@ -87,7 +87,9 @@ else:
 
     for i in range(len(sonde_ds)):
         launch_time[i] = sonde_ds[i].launch_time.values
-
+    
+    print('Running QC tests...')
+    
     (
         list_of_variables,
         s_time,
@@ -125,14 +127,16 @@ else:
     status_ds = f2.get_the_FLAG(status_ds, ind_FLAG, srf_FLAG)
     status_ds["launch_time"] = (["time"], pd.DatetimeIndex(launch_time))
     status_ds = f2.add_sonde_id_to_status_ds(Platform, sonde_ds, status_ds)
-
+    
+    print('Saving QC status file...')
+    
     to_save_ds = (
         status_ds.swap_dims({"time": "sonde_id"}).reset_coords("time", drop=True)
         # .sortby("launch_time")
     )
 
     to_save_ds = f2.rename_vars(to_save_ds)
-
+    
     to_save_ds.to_netcdf(
         f"{qc_directory}Status_of_sondes_v{joanne.__version__}.nc"
     )
