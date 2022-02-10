@@ -3,4 +3,9 @@
 notebooks/Sandbox.ipynb
 
 # Python files
-**/__pycache__ 
+**/__pycache__
+
+# Generated Data
+extra/Sample_Data/**/QC
+extra/Sample_Data/**/Level_2
+extra/Sample_Data/**/Level_3
